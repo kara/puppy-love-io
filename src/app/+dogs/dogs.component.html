@@ -1,0 +1,26 @@
+
+<md-card>
+  <md-card-title>Create a profile</md-card-title>
+  <md-card-content>
+    <form #f="ngForm">
+      <md-input placeholder="Name" ngControl="name"></md-input>
+      <md-input placeholder="Tagline" ngControl="tagline"></md-input>
+      <md-input placeholder="Image URL" ngControl="image"></md-input>
+    </form>
+  </md-card-content>
+  <md-card-actions align="end">
+    <button md-raised-button color="accent" (click)="postDog(f.value)">POST</button>
+  </md-card-actions>
+</md-card>
+
+<md-card *ngFor="let dog of dogs | async">
+  <img md-card-image [alt]="dog.name" [src]="dog.image">
+  <md-card-title>{{dog.name}}</md-card-title>
+  <md-card-content class="secondary">
+    {{dog.tagline}}
+  </md-card-content>
+  <md-card-actions align="end">
+    <button md-button color="primary">SNIFF</button>
+    <button md-button color="primary">WOOF</button>
+  </md-card-actions>
+</md-card>
